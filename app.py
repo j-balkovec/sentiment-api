@@ -1,3 +1,33 @@
+"""_Sentiment Analysis Algorithm API_
+@author:
+    Jakob Balkovec
+
+@date:
+    June 26, 2023
+
+@version:
+    1.0
+
+@license:
+    This code is licensed under the MIT License.
+
+@file:
+    main.py
+
+@description:
+    This script implements a sentiment analysis algorithm API that determines the sentiment 
+    polarity (positive, negative, or neutral) of textual data. 
+    It utilizes the TextBlob library for sentiment analysis.
+    
+@usage:
+
+    Run this script with the necessary dependencies installed and provide the text data to be analyzed. 
+    The algorithm will output the sentiment polarity score for each input.
+@example:
+    $ python main.py
+    from textblob import TextBlob
+"""
+
 import csv
 import json
 from json import dumps
@@ -184,7 +214,15 @@ def write_data_to_file(data: List[dict], filename: str) -> None:
 :return: JSON: The analyzed data.
 """
 
-'''basic -> handles get requests'''
+"""
+Analyzes data and renders the 'intro.html' template.
+
+Args:
+    None
+
+Returns:
+    None
+"""
 @app.route('/', methods=['GET'])
 def analyze_data():
     establish_nltk()
