@@ -214,20 +214,23 @@ def write_data_to_file(data: List[dict], filename: str) -> None:
 :return: JSON: The analyzed data.
 """
 
-"""
-Analyzes data and renders the 'intro.html' template.
+"""__summary__
+:desc: Analyzes data and renders the 'intro.html' template.
 
-Args:
-    None
+:param: None
 
-Returns:
-    None
+:return: None
 """
 @app.route('/', methods=['GET'])
 def analyze_data():
     establish_nltk()
     return render_template('intro.html')
 
+"""__summary__
+:desc: A function that loads more data.
+
+:return: str: The rendered template.
+"""
 @app.route('/load_more_data', methods=['POST'])
 def load_more_data():
     data = read_data(IN_FILE_)
@@ -235,6 +238,13 @@ def load_more_data():
     write_data_to_file(data, OUT_FILE_)
     return render_template('analyze.html', data=data[5:])
 
+"""__summary__
+:desc: Retrieves the maximum polarity from the given input data and returns it in a formatted JSON string.
+
+:param: None
+
+:return: str: A JSON string containing the maximum polarity value.
+"""
 @app.route('/get_max_polarity', methods=['POST'])
 def get_max_polarity():
     data = read_data(IN_FILE_)
@@ -244,10 +254,24 @@ def get_max_polarity():
     pretty_data = json.dumps(data_out, indent=4)
     return render_template('max.html', data=pretty_data)
 
+"""__summary__
+:desc: Redirects the user to the GitHub page of j-balkovec.
+
+:param: None
+
+:return: None
+"""
 @app.route('/go_to_github', methods=['POST'])
 def go_to_github():
     return redirect(location="https://github.com/j-balkovec", code=302)
 
+"""__summary__
+:desc: A route to get the minimum polarity.
+
+:param: None
+
+:return: A rendered template with the minimum polarity data.
+"""
 @app.route('/get_min_polarity', methods=['POST'])
 def get_min_polarity():
     data = read_data(IN_FILE_)
@@ -257,10 +281,22 @@ def get_min_polarity():
     pretty_data = json.dumps(data_out, indent=4)
     return render_template('max.html', data=pretty_data)
 
+"""__summary__
+:desc: Acquires a data set by redirecting the user to the specified URL.
+
+:param: None
+
+:return: None
+"""
 @app.route('/acquire_data_set', methods=['POST'])
 def acquire_data_set():
     return redirect(location="https://brightdata.com/products/datasets/Twitter", code=302)
 
+"""__summary__ 
+:desc: View data from the specified route using the POST method.
+
+:return: The rendered analyze.html template with the data.
+"""
 @app.route('/view_data', methods=['POST'])
 def view_data():
     establish_nltk()
