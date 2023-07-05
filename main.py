@@ -28,19 +28,6 @@
     from textblob import TextBlob
 """
 
-"""_note_
-Sentiment Analysis Algorithm
-Go into "myenv" in the conda environment where all the dependencies are installed
-"""
-
-"""__plan__"""
-'''
-Make a separate file that finds the extremes to see if the algo is working properly
-Data visualization
-Testing
-Bug Checking & Optimization
-'''
-
 """__imports__"""
 import csv
 import json
